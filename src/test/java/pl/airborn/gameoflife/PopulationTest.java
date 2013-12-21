@@ -2,7 +2,6 @@ package pl.airborn.gameoflife;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-import junit.framework.TestCase;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
@@ -15,7 +14,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @RunWith(JUnitParamsRunner.class)
-public class PopulationTest extends TestCase {
+public class PopulationTest {
 
     private Population population = new Population();
 

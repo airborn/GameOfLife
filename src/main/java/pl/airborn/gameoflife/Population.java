@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Population {
-    private Map<Position, Cell> currentPopulation = Maps.newHashMap();
+    private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
 
     public void addCell(Cell cell) {
         currentPopulation.put(cell.getPosition(), cell);

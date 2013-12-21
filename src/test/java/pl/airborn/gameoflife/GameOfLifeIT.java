@@ -28,7 +28,11 @@ public class GameOfLifeIT {
 
         // then
         Collection<Cell> populationMembers = world.getPopulationMembers();
-        assertThat(populationMembers).containsOnly(expected);
+        if (expected.length > 0) {
+            assertThat(populationMembers).containsOnly(expected);
+        } else {
+            assertThat(populationMembers).isEmpty();
+        }
     }
 
     private World createWorld(Cell... cells) {

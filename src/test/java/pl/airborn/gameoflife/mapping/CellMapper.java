@@ -3,13 +3,16 @@ package pl.airborn.gameoflife.mapping;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import junitparams.mappers.DataMapper;
 import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.Position;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CellMapper implements DataMapper {
 
@@ -22,10 +25,15 @@ public class CellMapper implements DataMapper {
             for (JsonNode testNode : rootNode) {
                 JsonNode beforeNode = testNode.get("before");
                 Cell[] beforeCells = getCellArray(beforeNode);
-                JsonNode afterNode = testNode.get("expected");
-                Cell[] afterCells = getCellArray(afterNode);
-                int evolutions = testNode.get("evolutions").asInt();
-                objects.add(new Object[]{beforeCells, afterCells, evolutions});
+                JsonNode evolutions = testNode.get("evolutions");
+                Map<Integer, Cell[]> evolutionsSteps = Maps.newHashMap();
+                for (JsonNode evolution : evolutions) {
+                    int evolutionAge = evolution.get("evolution").asInt();
+                    JsonNode expected = evolution.get("expected");
+                    Cell[] expectedCells = getCellArray(expected);
+                    evolutionsSteps.put(evolutionAge, expectedCells);
+                }
+                objects.add(new Object[]{beforeCells, evolutionsSteps});
             }
         } catch (IOException e) {
             e.printStackTrace();

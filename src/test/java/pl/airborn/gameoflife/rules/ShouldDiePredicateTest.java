@@ -9,9 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import pl.airborn.gameoflife.Cell;
-import pl.airborn.gameoflife.Population;
+import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
-import pl.airborn.gameoflife.rules.ShouldDiePredicate;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -22,7 +21,7 @@ public class ShouldDiePredicateTest {
     @InjectMocks
     private ShouldDiePredicate shouldDiePredicate;
     @Mock
-    private Population population;
+    private PopulationStateChecker populationStateChecker;
     @Mock
     private Cell cell;
     @Mock
@@ -38,7 +37,7 @@ public class ShouldDiePredicateTest {
     @Parameters({"2", "3"})
     public void shouldSurvive(int neighbours) throws Exception {
         // given
-        when(population.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
+        when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
 
         // when
         boolean actual = shouldDiePredicate.apply(cell);
@@ -51,7 +50,7 @@ public class ShouldDiePredicateTest {
     @Parameters({"0", "1", "4", "5", "6", "7", "8"})
     public void shouldDie(int neighbours) throws Exception {
         // given
-        when(population.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
+        when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
 
         // when
         boolean actual = shouldDiePredicate.apply(cell);

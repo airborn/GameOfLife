@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class Population {
+public class Population implements PopulationStateChecker {
     private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
 
     public void addCell(Cell cell) {
@@ -19,10 +19,12 @@ public class Population {
         return currentPopulation.values();
     }
 
+    @Override
     public boolean isAlive(Position position) {
         return currentPopulation.containsKey(position);
     }
 
+    @Override
     public int getNumberOfLivingNeighbours(Position position) {
         final Predicate<Position> isAlive = new Predicate<Position>() {
 

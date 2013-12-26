@@ -3,11 +3,13 @@ package pl.airborn.gameoflife;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.inject.Singleton;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+@Singleton
 public class Population implements PopulationStateChecker {
     private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
 

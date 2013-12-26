@@ -1,14 +1,13 @@
 package pl.airborn.gameoflife;
 
 import com.google.common.collect.Ordering;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import pl.airborn.gameoflife.mapping.CellMapper;
-import pl.airborn.gameoflife.rules.KillRules;
-import pl.airborn.gameoflife.rules.NewbornsRules;
 
 import java.util.Collection;
 import java.util.Map;
@@ -43,13 +42,13 @@ public class GameOfLifeIT {
     }
 
     private World createWorld(Cell[] cells) {
-        Population population = new Population();
+        Injector injector = Guice.createInjector(new BasicModule());
+        World world = injector.getInstance(World.class);
+
         for (Cell cell : cells) {
-            population.addCell(cell);
+            world.addCell(cell);
         }
-        KillRules killRules = new KillRules();
-        NewbornsRules newbornsRules = new NewbornsRules();
-        GameRules gameRules = new GameRules(killRules, newbornsRules);
-        return new World(gameRules, population);
+
+        return world;
     }
 }

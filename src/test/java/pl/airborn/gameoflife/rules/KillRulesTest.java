@@ -13,7 +13,6 @@ import pl.airborn.gameoflife.rules.KillRules;
 import java.util.Collection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)

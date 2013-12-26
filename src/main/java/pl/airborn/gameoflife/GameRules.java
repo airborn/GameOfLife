@@ -5,7 +5,6 @@ import com.google.inject.Singleton;
 import pl.airborn.gameoflife.rules.KillRules;
 import pl.airborn.gameoflife.rules.NewbornsRules;
 
-import java.util.Collection;
 import java.util.Set;
 
 @Singleton

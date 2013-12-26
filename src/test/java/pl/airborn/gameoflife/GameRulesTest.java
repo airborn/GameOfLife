@@ -9,7 +9,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pl.airborn.gameoflife.rules.KillRules;
 import pl.airborn.gameoflife.rules.NewbornsRules;
 
-import java.util.Collection;
 import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;

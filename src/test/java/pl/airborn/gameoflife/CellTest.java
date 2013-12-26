@@ -22,20 +22,4 @@ public class CellTest {
         //then
         assertThat(actual).isEqualTo(expected);
     }
-
-
-    @Test
-    public void shouldReturnNeighboursPositions() throws Exception {
-        // given
-        Position position = mock(Position.class);
-        Set<Position> expected = mock(Set.class);
-        when(position.getNeighboursPositions()).thenReturn(expected);
-        Cell cell = new Cell(position);
-
-        // when
-        Set<Position> actual = cell.getNeighboursPositions();
-
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }
 }

@@ -4,14 +4,24 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import pl.airborn.gameoflife.position.PositionCalculator;
 
 import java.util.Map;
 import java.util.Set;
 
 @Singleton
 public class Population implements PopulationStateChecker {
-    private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
+
+    private final PositionCalculator positionCalculator;
+    private final Map<Position, Cell> currentPopulation;
+
+    @Inject
+    public Population(PositionCalculator positionCalculator) {
+        this.positionCalculator = positionCalculator;
+        currentPopulation = Maps.newHashMap();
+    }
 
     public void addCell(Cell cell) {
         currentPopulation.put(cell.getPosition(), cell);
@@ -35,7 +45,7 @@ public class Population implements PopulationStateChecker {
                 return isAlive(position);
             }
         };
-        Set<Position> neighboursPositions = position.getNeighboursPositions();
+        Set<Position> neighboursPositions = positionCalculator.getNeighboursPositions(position);
         return Sets.filter(neighboursPositions, isAlive).size();
     }
 

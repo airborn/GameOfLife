@@ -27,22 +27,4 @@ public class PositionTest {
         // then
         assertThat(position1).isNotEqualTo(position2);
     }
-
-    @Test
-    public void shouldReturnNeighboursPositions() throws Exception {
-        // given
-        Position[] expectedNeighbours = new Position[]{
-                new Position(2, 3), new Position(3, 3), new Position(4, 3),
-                new Position(2, 4), new Position(4, 4),
-                new Position(2, 5), new Position(3, 5), new Position(4, 5)
-        };
-
-        Position position = new Position(3, 4);
-
-        // when
-        Set<Position> actual = position.getNeighboursPositions();
-
-        // then
-        assertThat(actual).containsOnly(expectedNeighbours);
-    }
 }

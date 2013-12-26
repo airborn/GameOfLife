@@ -15,10 +15,6 @@ public class Cell {
         return position;
     }
 
-    public Set<Position> getNeighboursPositions() {
-        return position.getNeighboursPositions();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

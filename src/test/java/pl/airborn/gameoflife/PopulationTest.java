@@ -4,8 +4,13 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import pl.airborn.gameoflife.position.PositionCalculator;
 
 import java.util.Collection;
 import java.util.Set;
@@ -16,7 +21,15 @@ import static org.mockito.Mockito.*;
 @RunWith(JUnitParamsRunner.class)
 public class PopulationTest {
 
-    private Population population = new Population();
+    @InjectMocks
+    private Population population;
+    @Mock
+    private PositionCalculator positionCalculator;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void shouldReturnPopulationMembers() throws Exception {
@@ -65,7 +78,7 @@ public class PopulationTest {
         // given
         Position cellPosition = mock(Position.class);
         Set<Position> neighbours = getNeighbours();
-        when(cellPosition.getNeighboursPositions()).thenReturn(neighbours);
+        when(positionCalculator.getNeighboursPositions(cellPosition)).thenReturn(neighbours);
         Iterable<Position> expectedPositions = Iterables.limit(neighbours, param);
         for (Position expectedPosition : expectedPositions) {
             population.addCell(new Cell(expectedPosition));
@@ -140,5 +153,4 @@ public class PopulationTest {
     private Cell createCellMock() {
         return mock(Cell.class, withSettings().defaultAnswer(RETURNS_DEEP_STUBS));
     }
-
 }

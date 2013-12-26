@@ -14,15 +14,12 @@ public class Position {
         this.y = y;
     }
 
-    public Set<Position> getNeighboursPositions() {
-        Set<Position> neighboursPositions = Sets.newHashSet();
-        for (int dx = -1; dx <= 1; dx++) {
-            for (int dy = -1; dy <= 1; dy++) {
-                neighboursPositions.add(new Position(x + dx, y + dy));
-            }
-        }
-        neighboursPositions.remove(this);
-        return neighboursPositions;
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class GameRules {
     }
 
     public PopulationChange apply(final Population currentPopulation) {
-        Collection<Cell> survivors = killRules.getKilled(currentPopulation);
+        Set<Cell> survivors = killRules.getKilled(currentPopulation);
         Set<Cell> newborns = newbornsRules.getNewborns(currentPopulation);
         return new PopulationChange(newborns, survivors);
     }

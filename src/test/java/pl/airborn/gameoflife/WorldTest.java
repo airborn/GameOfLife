@@ -1,5 +1,6 @@
 package pl.airborn.gameoflife;
 
+import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -7,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collection;
+import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -26,7 +28,7 @@ public class WorldTest {
     @Test
     public void shouldReturnPopulationMembers() throws Exception {
         // given
-        Collection<Cell> expected = mock(Collection.class);
+        ImmutableSet<Cell> expected = mock(ImmutableSet.class);
         when(population.getMembers()).thenReturn(expected);
 
         // when

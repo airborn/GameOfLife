@@ -1,12 +1,12 @@
 package pl.airborn.gameoflife.rules;
 
-import com.google.common.collect.Collections2;
+import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.Population;
 
-import java.util.Collection;
+import java.util.Set;
 
 @Singleton
 public class KillRules {
@@ -18,8 +18,8 @@ public class KillRules {
         this.shouldDiePredicate = shouldDiePredicate;
     }
 
-    public Collection<Cell> getKilled(Population currentPopulation) {
-        Collection<Cell> populationMembers = currentPopulation.getMembers();
-        return Collections2.filter(populationMembers, shouldDiePredicate);
+    public Set<Cell> getKilled(Population currentPopulation) {
+        Set<Cell> populationMembers = currentPopulation.getMembers();
+        return Sets.filter(populationMembers, shouldDiePredicate);
     }
 }

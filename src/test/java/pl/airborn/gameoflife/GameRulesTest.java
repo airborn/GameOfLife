@@ -33,7 +33,7 @@ public class GameRulesTest {
         // given
         Set<Cell> newborns = Sets.newHashSet(mock(Cell.class));
         when(newbornsRules.getNewborns(population)).thenReturn(newborns);
-        Collection<Cell> killed = Sets.newHashSet(mock(Cell.class));
+        Set<Cell> killed = Sets.newHashSet(mock(Cell.class));
         when(killRules.getKilled(population)).thenReturn(killed);
 
         // when

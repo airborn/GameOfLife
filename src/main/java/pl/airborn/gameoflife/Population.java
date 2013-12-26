@@ -1,6 +1,7 @@
 package pl.airborn.gameoflife;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.inject.Singleton;
@@ -17,8 +18,8 @@ public class Population implements PopulationStateChecker {
         currentPopulation.put(cell.getPosition(), cell);
     }
 
-    public Collection<Cell> getMembers() {
-        return currentPopulation.values();
+    public ImmutableSet<Cell> getMembers() {
+        return ImmutableSet.copyOf(currentPopulation.values());
     }
 
     @Override

@@ -11,22 +11,28 @@ import org.mockito.MockitoAnnotations;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
 
+import java.util.Set;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @RunWith(JUnitParamsRunner.class)
 public class ShouldBornPredicateTest {
 
+    public static final int NEIGHBOURS_REQUIRED_TO_BORN = 3;
     @InjectMocks
     private ShouldBornPredicate shouldBornPredicate;
     @Mock
     private PopulationStateChecker populationStateChecker;
     @Mock
     private Position position;
+    @Mock
+    private Set<Integer> neighboursRequiredToBorn;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        when(neighboursRequiredToBorn.contains(NEIGHBOURS_REQUIRED_TO_BORN)).thenReturn(true);
     }
 
     @Test
@@ -57,7 +63,7 @@ public class ShouldBornPredicateTest {
     @Test
     public void shouldBorn() throws Exception {
         // given
-        when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(3);
+        when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(NEIGHBOURS_REQUIRED_TO_BORN);
 
         // when
         boolean actual = shouldBornPredicate.apply(position);

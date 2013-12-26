@@ -1,9 +1,9 @@
 package pl.airborn.gameoflife.rules;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import pl.airborn.gameoflife.inject.NeighboursRequiredToBorn;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
 
@@ -12,11 +12,12 @@ import java.util.Set;
 @Singleton
 public class ShouldBornPredicate implements Predicate<Position> {
     private final PopulationStateChecker populationStateChecker;
-    private final Set<Integer> neighboursRequiredToBorn = Sets.newHashSet(3);
+    private final Set<Integer> neighboursRequiredToBorn;
 
     @Inject
-    public ShouldBornPredicate(PopulationStateChecker populationStateChecker) {
+    public ShouldBornPredicate(PopulationStateChecker populationStateChecker, @NeighboursRequiredToBorn Set<Integer> neighboursRequiredToBorn) {
         this.populationStateChecker = populationStateChecker;
+        this.neighboursRequiredToBorn = neighboursRequiredToBorn;
     }
 
     @Override

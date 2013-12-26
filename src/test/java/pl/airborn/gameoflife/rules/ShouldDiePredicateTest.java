@@ -12,6 +12,8 @@ import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
 
+import java.util.Set;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -26,6 +28,8 @@ public class ShouldDiePredicateTest {
     private Cell cell;
     @Mock
     private Position position;
+    @Mock
+    private Set<Integer> neighboursRequiredToSurvive;
 
     @Before
     public void setUp() throws Exception {
@@ -38,6 +42,7 @@ public class ShouldDiePredicateTest {
     public void shouldSurvive(int neighbours) throws Exception {
         // given
         when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
+        when(neighboursRequiredToSurvive.contains(neighbours)).thenReturn(true);
 
         // when
         boolean actual = shouldDiePredicate.apply(cell);

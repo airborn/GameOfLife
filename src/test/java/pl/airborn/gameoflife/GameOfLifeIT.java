@@ -7,6 +7,7 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import pl.airborn.gameoflife.inject.BasicModule;
 import pl.airborn.gameoflife.mapping.CellMapper;
 
 import java.util.Collection;

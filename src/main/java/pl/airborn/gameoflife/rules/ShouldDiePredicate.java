@@ -7,17 +7,19 @@ import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.inject.NeighboursRequiredToSurvive;
 
 import java.util.Set;
 
 @Singleton
 public class ShouldDiePredicate implements Predicate<Cell> {
     private final PopulationStateChecker populationStateChecker;
-    private final Set<Integer> neighboursRequiredToSurvive = Sets.newHashSet(2, 3);
+    private final Set<Integer> neighboursRequiredToSurvive;
 
     @Inject
-    public ShouldDiePredicate(PopulationStateChecker populationStateChecker) {
+    public ShouldDiePredicate(PopulationStateChecker populationStateChecker, @NeighboursRequiredToSurvive Set<Integer> neighboursRequiredToSurvive) {
         this.populationStateChecker = populationStateChecker;
+        this.neighboursRequiredToSurvive = neighboursRequiredToSurvive;
     }
 
     @Override

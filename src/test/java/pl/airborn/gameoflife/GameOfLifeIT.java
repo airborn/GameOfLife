@@ -1,5 +1,6 @@
 package pl.airborn.gameoflife;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Ordering;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -27,7 +28,7 @@ public class GameOfLifeIT {
         for (int age = 0; age < maxAge; age++) {
             if (evolutionsSteps.containsKey(age)) {
                 Cell[] expected = evolutionsSteps.get(age);
-                Collection<Cell> actual = world.getPopulationMembers();
+                ImmutableSet<Cell> actual = world.getPopulationMembers();
                 assertPopulationState(actual, expected);
             }
             world.evolve();

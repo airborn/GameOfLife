@@ -1,9 +1,8 @@
 package pl.airborn.gameoflife;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
-import java.util.Collection;
 
 @Singleton
 public class World {
@@ -17,7 +16,7 @@ public class World {
         this.population = population;
     }
 
-    public Collection<Cell> getPopulationMembers() {
+    public ImmutableSet<Cell> getPopulationMembers() {
         return population.getMembers();
     }
 

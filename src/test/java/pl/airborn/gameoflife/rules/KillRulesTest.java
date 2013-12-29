@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.Population;
-import pl.airborn.gameoflife.Position;
 import pl.airborn.gameoflife.rules.KillRules;
 
 import java.util.Collection;

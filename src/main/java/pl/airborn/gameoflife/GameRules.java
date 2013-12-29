@@ -1,11 +1,10 @@
 package pl.airborn.gameoflife;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.rules.KillRules;
 import pl.airborn.gameoflife.rules.NewbornsRules;
-
-import java.util.Set;
 
 @Singleton
 public class GameRules {
@@ -20,8 +19,8 @@ public class GameRules {
     }
 
     public PopulationChange apply(final Population currentPopulation) {
-        Set<Cell> survivors = killRules.getKilled(currentPopulation);
-        Set<Cell> newborns = newbornsRules.getNewborns(currentPopulation);
-        return new PopulationChange(newborns, survivors);
+        ImmutableSet<Cell> killed = killRules.getKilled(currentPopulation);
+        ImmutableSet<Cell> newborns = newbornsRules.getNewborns(currentPopulation);
+        return new PopulationChange(newborns, killed);
     }
 }

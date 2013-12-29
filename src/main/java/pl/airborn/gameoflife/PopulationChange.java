@@ -1,25 +1,22 @@
 package pl.airborn.gameoflife;
 
-import com.google.common.collect.Sets;
-
-import java.util.Collection;
-import java.util.Set;
+import com.google.common.collect.ImmutableSet;
 
 public class PopulationChange {
 
-    private final Set<Cell> shouldBeBorne;
-    private final Set<Cell> shouldBeKilled;
+    private final ImmutableSet<Cell> shouldBeBorne;
+    private final ImmutableSet<Cell> shouldBeKilled;
 
-    public PopulationChange(Collection<Cell> shouldBeBorn, Collection<Cell> shouldBeKill) {
-        this.shouldBeBorne = Sets.newHashSet(shouldBeBorn);
-        this.shouldBeKilled = Sets.newHashSet(shouldBeKill);
+    public PopulationChange(ImmutableSet<Cell> shouldBeBorn, ImmutableSet<Cell> shouldBeKill) {
+        this.shouldBeBorne = shouldBeBorn;
+        this.shouldBeKilled = shouldBeKill;
     }
 
-    public Set<Cell> getShouldBeBorne() {
+    public ImmutableSet<Cell> getShouldBeBorne() {
         return shouldBeBorne;
     }
 
-    public Set<Cell> getShouldBeKilled() {
+    public ImmutableSet<Cell> getShouldBeKilled() {
         return shouldBeKilled;
     }
 }

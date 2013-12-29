@@ -1,6 +1,6 @@
 package pl.airborn.gameoflife;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -8,8 +8,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.airborn.gameoflife.rules.KillRules;
 import pl.airborn.gameoflife.rules.NewbornsRules;
-
-import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -30,9 +28,9 @@ public class GameRulesTest {
     @Test
     public void shouldReturnPopulationChanges() throws Exception {
         // given
-        Set<Cell> newborns = Sets.newHashSet(mock(Cell.class));
+        ImmutableSet<Cell> newborns = ImmutableSet.of(mock(Cell.class));
         when(newbornsRules.getNewborns(population)).thenReturn(newborns);
-        Set<Cell> killed = Sets.newHashSet(mock(Cell.class));
+        ImmutableSet<Cell> killed = ImmutableSet.of(mock(Cell.class));
         when(killRules.getKilled(population)).thenReturn(killed);
 
         // when

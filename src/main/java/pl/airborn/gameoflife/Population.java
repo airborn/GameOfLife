@@ -1,27 +1,15 @@
 package pl.airborn.gameoflife;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import pl.airborn.gameoflife.position.PositionCalculator;
 
 import java.util.Map;
-import java.util.Set;
 
 @Singleton
-public class Population implements PopulationStateChecker {
+public class Population {
 
-    private final PositionCalculator positionCalculator;
-    private final Map<Position, Cell> currentPopulation;
-
-    @Inject
-    public Population(PositionCalculator positionCalculator) {
-        this.positionCalculator = positionCalculator;
-        currentPopulation = Maps.newHashMap();
-    }
+    private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
 
     public void addCell(Cell cell) {
         currentPopulation.put(cell.getPosition(), cell);
@@ -31,22 +19,8 @@ public class Population implements PopulationStateChecker {
         return ImmutableSet.copyOf(currentPopulation.values());
     }
 
-    @Override
     public boolean isAlive(Position position) {
         return currentPopulation.containsKey(position);
-    }
-
-    @Override
-    public int getNumberOfLivingNeighbours(Position position) {
-        final Predicate<Position> isAlive = new Predicate<Position>() {
-
-            @Override
-            public boolean apply(Position position) {
-                return isAlive(position);
-            }
-        };
-        Set<Position> neighboursPositions = positionCalculator.getNeighboursPositions(position);
-        return Sets.filter(neighboursPositions, isAlive).size();
     }
 
     public void applyPopulationChanges(PopulationChange populationChange) {

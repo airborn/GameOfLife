@@ -1,7 +1,6 @@
 package pl.airborn.gameoflife.rules;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Cell;

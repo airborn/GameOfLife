@@ -1,5 +1,6 @@
 package pl.airborn.gameoflife.rules;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -18,8 +19,9 @@ public class KillRules {
         this.shouldDiePredicate = shouldDiePredicate;
     }
 
-    public Set<Cell> getKilled(Population currentPopulation) {
+    public ImmutableSet<Cell> getKilled(Population currentPopulation) {
         Set<Cell> populationMembers = currentPopulation.getMembers();
-        return Sets.filter(populationMembers, shouldDiePredicate);
+        Set<Cell> killed = Sets.filter(populationMembers, shouldDiePredicate);
+        return ImmutableSet.copyOf(killed);
     }
 }

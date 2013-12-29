@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import pl.airborn.gameoflife.Population;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
 
@@ -28,6 +29,8 @@ public class ShouldBornPredicateTest {
     private Position position;
     @Mock
     private Set<Integer> neighboursRequiredToBorn;
+    @Mock
+    private Population population;
 
     @Before
     public void setUp() throws Exception {
@@ -38,7 +41,7 @@ public class ShouldBornPredicateTest {
     @Test
     public void shouldNotReborn_LivingCell() throws Exception {
         // given
-        when(populationStateChecker.isAlive(position)).thenReturn(true);
+        when(population.isAlive(position)).thenReturn(true);
 
         // when
         boolean actual = shouldBornPredicate.apply(position);

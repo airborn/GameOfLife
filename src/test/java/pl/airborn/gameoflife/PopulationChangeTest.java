@@ -1,9 +1,7 @@
 package pl.airborn.gameoflife;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
-
-import java.util.Collection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -14,9 +12,9 @@ public class PopulationChangeTest {
     public void shouldName() throws Exception {
         // given
         Cell cellToBorn = mock(Cell.class);
-        Collection<Cell> shouldBeBorn = Lists.newArrayList(cellToBorn);
+        ImmutableSet<Cell> shouldBeBorn = ImmutableSet.of(cellToBorn);
         Cell cellToBeKilled = mock(Cell.class);
-        Collection<Cell> shouldBeKill = Lists.newArrayList(cellToBeKilled);
+        ImmutableSet<Cell> shouldBeKill = ImmutableSet.of(cellToBeKilled);
 
         // when
         PopulationChange populationChange = new PopulationChange(shouldBeBorn, shouldBeKill);

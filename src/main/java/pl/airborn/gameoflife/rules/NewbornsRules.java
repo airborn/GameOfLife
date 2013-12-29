@@ -1,6 +1,7 @@
 package pl.airborn.gameoflife.rules;
 
 import com.google.common.collect.FluentIterable;
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Cell;
@@ -22,8 +23,13 @@ public class NewbornsRules {
         this.shouldBorn = shouldBorn;
     }
 
-    public Set<Cell> getNewborns(final Population currentPopulation) {
+    public ImmutableSet<Cell> getNewborns(final Population currentPopulation) {
         Set<Cell> populationMembers = currentPopulation.getMembers();
-        return FluentIterable.from(populationMembers).transformAndConcat(cellToNeighboursPositionsExpander).filter(shouldBorn).transform(cellFactory).toSet();
+        ImmutableSet<Cell> newborns = FluentIterable.from(populationMembers)
+                .transformAndConcat(cellToNeighboursPositionsExpander)
+                .filter(shouldBorn)
+                .transform(cellFactory)
+                .toSet();
+        return ImmutableSet.copyOf(newborns);
     }
 }

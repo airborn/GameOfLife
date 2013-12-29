@@ -1,7 +1,6 @@
 package pl.airborn.gameoflife;
 
 import java.util.Objects;
-import java.util.Set;
 
 public class Cell {
 

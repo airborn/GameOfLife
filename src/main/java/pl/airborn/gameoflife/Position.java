@@ -1,9 +1,5 @@
 package pl.airborn.gameoflife;
 
-import com.google.common.collect.Sets;
-
-import java.util.Set;
-
 public class Position {
 
     private final int x;

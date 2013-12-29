@@ -48,7 +48,7 @@ public class GameOfLifeIT {
         World world = injector.getInstance(World.class);
 
         for (Cell cell : cells) {
-            world.addCell(cell);
+            world.addCellAt(cell.getPosition());
         }
 
         return world;

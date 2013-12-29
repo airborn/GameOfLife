@@ -28,9 +28,9 @@ public class GameRulesTest {
     @Test
     public void shouldReturnPopulationChanges() throws Exception {
         // given
-        ImmutableSet<Cell> newborns = ImmutableSet.of(mock(Cell.class));
+        ImmutableSet<Position> newborns = ImmutableSet.of(mock(Position.class));
         when(newbornsRules.getNewborns(population)).thenReturn(newborns);
-        ImmutableSet<Cell> killed = ImmutableSet.of(mock(Cell.class));
+        ImmutableSet<Position> killed = ImmutableSet.of(mock(Position.class));
         when(killRules.getKilled(population)).thenReturn(killed);
 
         // when

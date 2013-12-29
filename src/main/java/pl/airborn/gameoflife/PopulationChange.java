@@ -4,19 +4,19 @@ import com.google.common.collect.ImmutableSet;
 
 public class PopulationChange {
 
-    private final ImmutableSet<Cell> shouldBeBorne;
-    private final ImmutableSet<Cell> shouldBeKilled;
+    private final ImmutableSet<Position> shouldBeBorne;
+    private final ImmutableSet<Position> shouldBeKilled;
 
-    public PopulationChange(ImmutableSet<Cell> shouldBeBorn, ImmutableSet<Cell> shouldBeKill) {
+    public PopulationChange(ImmutableSet<Position> shouldBeBorn, ImmutableSet<Position> shouldBeKill) {
         this.shouldBeBorne = shouldBeBorn;
         this.shouldBeKilled = shouldBeKill;
     }
 
-    public ImmutableSet<Cell> getShouldBeBorne() {
+    public ImmutableSet<Position> getShouldBeBorne() {
         return shouldBeBorne;
     }
 
-    public ImmutableSet<Cell> getShouldBeKilled() {
+    public ImmutableSet<Position> getShouldBeKilled() {
         return shouldBeKilled;
     }
 }

@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.Position;
 
@@ -25,8 +24,6 @@ public class ShouldDiePredicateTest {
     @Mock
     private PopulationStateChecker populationStateChecker;
     @Mock
-    private Cell cell;
-    @Mock
     private Position position;
     @Mock
     private Set<Integer> neighboursRequiredToSurvive;
@@ -34,7 +31,6 @@ public class ShouldDiePredicateTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        when(cell.getPosition()).thenReturn(position);
     }
 
     @Test
@@ -45,7 +41,7 @@ public class ShouldDiePredicateTest {
         when(neighboursRequiredToSurvive.contains(neighbours)).thenReturn(true);
 
         // when
-        boolean actual = shouldDiePredicate.apply(cell);
+        boolean actual = shouldDiePredicate.apply(position);
 
         // then
         assertThat(actual).isFalse();
@@ -58,7 +54,7 @@ public class ShouldDiePredicateTest {
         when(populationStateChecker.getNumberOfLivingNeighbours(position)).thenReturn(neighbours);
 
         // when
-        boolean actual = shouldDiePredicate.apply(cell);
+        boolean actual = shouldDiePredicate.apply(position);
 
         // then
         assertThat(actual).isTrue();

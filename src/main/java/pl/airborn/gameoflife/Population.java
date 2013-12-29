@@ -2,6 +2,7 @@ package pl.airborn.gameoflife;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import java.util.Map;
@@ -9,14 +10,26 @@ import java.util.Map;
 @Singleton
 public class Population {
 
-    private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
 
-    public void addCell(Cell cell) {
-        currentPopulation.put(cell.getPosition(), cell);
+    private final Map<Position, Cell> currentPopulation = Maps.newHashMap();
+    private final CellFactory cellFactory;
+
+    @Inject
+    public Population(CellFactory cellFactory) {
+        this.cellFactory = cellFactory;
+    }
+
+    public void createCellAt(Position position) {
+        Cell cell = cellFactory.createCell(position);
+        currentPopulation.put(position, cell);
     }
 
     public ImmutableSet<Cell> getMembers() {
         return ImmutableSet.copyOf(currentPopulation.values());
+    }
+
+    public ImmutableSet<Position> getMembersPositions() {
+        return ImmutableSet.copyOf(currentPopulation.keySet());
     }
 
     public boolean isAlive(Position position) {
@@ -28,19 +41,19 @@ public class Population {
         addCells(populationChange.getShouldBeBorne());
     }
 
-    private void addCells(Iterable<Cell> cells) {
-        for (Cell cellToBeBorn : cells) {
-            addCell(cellToBeBorn);
+    private void addCells(Iterable<Position> positions) {
+        for (Position position : positions) {
+            createCellAt(position);
         }
     }
 
-    private void removeCells(Iterable<Cell> cells) {
-        for (Cell cellToBeKilled : cells) {
-            removeCell(cellToBeKilled);
+    private void removeCells(Iterable<Position> positions) {
+        for (Position position : positions) {
+            removeCell(position);
         }
     }
 
-    private void removeCell(Cell cellToBeKilled) {
-        currentPopulation.remove(cellToBeKilled.getPosition());
+    private void removeCell(Position positionToBeKilled) {
+        currentPopulation.remove(positionToBeKilled);
     }
 }

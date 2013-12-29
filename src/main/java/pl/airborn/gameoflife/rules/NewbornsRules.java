@@ -4,32 +4,28 @@ import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.Population;
+import pl.airborn.gameoflife.Position;
 
 import java.util.Set;
 
 @Singleton
 public class NewbornsRules {
 
-    private final CellFactory cellFactory;
-    private final CellToNeighboursPositionsExpander cellToNeighboursPositionsExpander;
+    private final NeighboursExpander neighboursExpander;
     private final ShouldBornPredicate shouldBorn;
 
     @Inject
-    public NewbornsRules(CellFactory cellFactory, CellToNeighboursPositionsExpander cellToNeighboursPositionsExpander, ShouldBornPredicate shouldBorn) {
-        this.cellFactory = cellFactory;
-        this.cellToNeighboursPositionsExpander = cellToNeighboursPositionsExpander;
+    public NewbornsRules(NeighboursExpander neighboursExpander, ShouldBornPredicate shouldBorn) {
+        this.neighboursExpander = neighboursExpander;
         this.shouldBorn = shouldBorn;
     }
 
-    public ImmutableSet<Cell> getNewborns(final Population currentPopulation) {
-        Set<Cell> populationMembers = currentPopulation.getMembers();
-        ImmutableSet<Cell> newborns = FluentIterable.from(populationMembers)
-                .transformAndConcat(cellToNeighboursPositionsExpander)
+    public ImmutableSet<Position> getNewborns(final Population currentPopulation) {
+        Set<Position> populationMembersPositions = currentPopulation.getMembersPositions();
+        return FluentIterable.from(populationMembersPositions)
+                .transformAndConcat(neighboursExpander)
                 .filter(shouldBorn)
-                .transform(cellFactory)
                 .toSet();
-        return ImmutableSet.copyOf(newborns);
     }
 }

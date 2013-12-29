@@ -9,18 +9,18 @@ import static org.mockito.Mockito.mock;
 public class PopulationChangeTest {
 
     @Test
-    public void shouldName() throws Exception {
+    public void shouldReturnPopulationChanges() throws Exception {
         // given
-        Cell cellToBorn = mock(Cell.class);
-        ImmutableSet<Cell> shouldBeBorn = ImmutableSet.of(cellToBorn);
-        Cell cellToBeKilled = mock(Cell.class);
-        ImmutableSet<Cell> shouldBeKill = ImmutableSet.of(cellToBeKilled);
+        Position positionsToBorn = mock(Position.class);
+        ImmutableSet<Position> shouldBeBorn = ImmutableSet.of(positionsToBorn);
+        Position positionsToBeKilled = mock(Position.class);
+        ImmutableSet<Position> shouldBeKill = ImmutableSet.of(positionsToBeKilled);
 
         // when
         PopulationChange populationChange = new PopulationChange(shouldBeBorn, shouldBeKill);
 
         // then
-        assertThat(populationChange.getShouldBeBorne()).containsOnly(cellToBorn);
-        assertThat(populationChange.getShouldBeKilled()).containsOnly(cellToBeKilled);
+        assertThat(populationChange.getShouldBeBorne()).containsOnly(positionsToBorn);
+        assertThat(populationChange.getShouldBeKilled()).containsOnly(positionsToBeKilled);
     }
 }

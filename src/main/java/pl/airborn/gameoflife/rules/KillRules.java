@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import pl.airborn.gameoflife.Cell;
 import pl.airborn.gameoflife.Population;
+import pl.airborn.gameoflife.Position;
 
 import java.util.Set;
 
@@ -19,9 +19,9 @@ public class KillRules {
         this.shouldDiePredicate = shouldDiePredicate;
     }
 
-    public ImmutableSet<Cell> getKilled(Population currentPopulation) {
-        Set<Cell> populationMembers = currentPopulation.getMembers();
-        Set<Cell> killed = Sets.filter(populationMembers, shouldDiePredicate);
+    public ImmutableSet<Position> getKilled(Population currentPopulation) {
+        Set<Position> populationMembersPosition = currentPopulation.getMembersPositions();
+        Set<Position> killed = Sets.filter(populationMembersPosition, shouldDiePredicate);
         return ImmutableSet.copyOf(killed);
     }
 }

@@ -10,8 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import pl.airborn.gameoflife.position.PositionCalculator;
 
-import java.util.Collection;
-
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -22,6 +20,8 @@ public class PopulationTest {
     private Population population;
     @Mock
     private PositionCalculator positionCalculator;
+    @Mock
+    private CellFactory cellFactory;
 
     @Before
     public void setUp() throws Exception {
@@ -31,24 +31,41 @@ public class PopulationTest {
     @Test
     public void shouldReturnPopulationMembers() throws Exception {
         // given
-        Cell cell1 = new Cell(mock(Position.class));
-        population.addCell(cell1);
-        Cell cell2 = new Cell(mock(Position.class));
-        population.addCell(cell2);
+        Position position1 = mock(Position.class);
+        population.createCellAt(position1);
+        Position position2 = mock(Position.class);
+        population.createCellAt(position2);
 
         // when
-        Collection<Cell> actual = population.getMembers();
+        ImmutableSet<Position> actual = population.getMembersPositions();
 
         // then
-        assertThat(actual).containsOnly(cell1, cell2);
+        assertThat(actual).containsOnly(position1, position2);
+    }
+
+    @Test
+    public void shouldCreateCell() throws Exception {
+        // given
+        Position position = mock(Position.class);
+        population.createCellAt(position);
+
+        Cell cell = mock(Cell.class);
+
+        when(cellFactory.createCell(position)).thenReturn(cell);
+        population.createCellAt(position);
+
+        // when
+        ImmutableSet<Cell> actual = population.getMembers();
+
+        // then
+        assertThat(actual).containsOnly(cell);
     }
 
     @Test
     public void shouldCheckIfMemberIsAlive_true() throws Exception {
         // given
         Position position = mock(Position.class);
-        Cell cell1 = new Cell(position);
-        population.addCell(cell1);
+        population.createCellAt(position);
 
         // when
         boolean actual = population.isAlive(position);
@@ -72,37 +89,33 @@ public class PopulationTest {
     @Test
     public void shouldKillPopulationMembers() throws Exception {
         // given
-        Cell cellToKill = createCellMock();
-        Cell survivor = createCellMock();
-        PopulationChange populationChange = new PopulationChange(ImmutableSet.<Cell>of(), ImmutableSet.of(cellToKill));
+        Position positionToKill = mock(Position.class);
+        Position survivor = mock(Position.class);
+        PopulationChange populationChange = new PopulationChange(ImmutableSet.<Position>of(), ImmutableSet.of(positionToKill));
 
-        population.addCell(cellToKill);
-        population.addCell(survivor);
+        population.createCellAt(positionToKill);
+        population.createCellAt(survivor);
 
         // when
         population.applyPopulationChanges(populationChange);
 
         // then
-        assertThat(population.getMembers()).containsOnly(survivor);
+        assertThat(population.getMembersPositions()).containsOnly(survivor);
     }
 
     @Test
     public void shouldAddMemberToPopulation() throws Exception {
         // given
-        Cell oldCell = createCellMock();
-        Cell newCell = createCellMock();
-        PopulationChange populationChange = new PopulationChange(ImmutableSet.of(newCell), ImmutableSet.<Cell>of());
+        Position oldPosition = mock(Position.class);
+        Position newPosition = mock(Position.class);
+        PopulationChange populationChange = new PopulationChange(ImmutableSet.of(newPosition), ImmutableSet.<Position>of());
 
-        population.addCell(oldCell);
+        population.createCellAt(oldPosition);
 
         // when
         population.applyPopulationChanges(populationChange);
 
         // then
-        assertThat(population.getMembers()).containsOnly(oldCell, newCell);
-    }
-
-    private Cell createCellMock() {
-        return mock(Cell.class, withSettings().defaultAnswer(RETURNS_DEEP_STUBS));
+        assertThat(population.getMembersPositions()).containsOnly(oldPosition, newPosition);
     }
 }

@@ -25,7 +25,7 @@ public class World {
         population.applyPopulationChanges(populationChange);
     }
 
-    public void addCell(Cell cell) {
-        population.addCell(cell);
+    public void addCellAt(Position position) {
+        population.createCellAt(position);
     }
 }

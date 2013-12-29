@@ -7,8 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Collection;
-
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -31,7 +29,7 @@ public class WorldTest {
         when(population.getMembers()).thenReturn(expected);
 
         // when
-        Collection<Cell> actual = world.getPopulationMembers();
+        ImmutableSet<Cell> actual = world.getPopulationMembers();
 
         // then
         assertThat(actual).isEqualTo(expected);

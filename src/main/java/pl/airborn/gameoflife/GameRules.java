@@ -19,8 +19,8 @@ public class GameRules {
     }
 
     public PopulationChange apply(final Population currentPopulation) {
-        ImmutableSet<Cell> killed = killRules.getKilled(currentPopulation);
-        ImmutableSet<Cell> newborns = newbornsRules.getNewborns(currentPopulation);
+        ImmutableSet<Position> killed = killRules.getKilled(currentPopulation);
+        ImmutableSet<Position> newborns = newbornsRules.getNewborns(currentPopulation);
         return new PopulationChange(newborns, killed);
     }
 }

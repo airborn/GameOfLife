@@ -6,20 +6,20 @@ import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class PositionCalculatorTest {
+public class PositionCalculator2DTest {
 
-    PositionCalculator positionCalculator = new PositionCalculator();
+    private PositionCalculator2D positionCalculator = new PositionCalculator2D();
 
     @Test
     public void shouldReturnNeighboursPositions() throws Exception {
         // given
         Position[] expectedNeighbours = new Position[]{
-                new Position(2, 3), new Position(3, 3), new Position(4, 3),
-                new Position(2, 4), new Position(4, 4),
-                new Position(2, 5), new Position(3, 5), new Position(4, 5)
+                new Position2D(2, 3), new Position2D(3, 3), new Position2D(4, 3),
+                new Position2D(2, 4), new Position2D(4, 4),
+                new Position2D(2, 5), new Position2D(3, 5), new Position2D(4, 5)
         };
 
-        Position position = new Position(3, 4);
+        Position2D position = new Position2D(3, 4);
 
         // when
         Set<Position> actual = positionCalculator.getNeighboursPositions(position);

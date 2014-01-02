@@ -4,13 +4,14 @@ import org.junit.Test;
 import pl.airborn.gameoflife.position.Position;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 public class CellTest {
 
     @Test
     public void shouldReturnPosition() {
         //given
-        Position expected = new Position(3, 4);
+        Position expected = mock(Position.class);
         Cell cell = new Cell(expected);
 
         //when

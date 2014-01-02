@@ -1,5 +1,6 @@
 package pl.airborn.gameoflife.rules;
 
+import com.google.common.collect.ImmutableSet;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -26,7 +27,7 @@ public class ShouldDiePredicateTest {
     @Mock
     private Position position;
     @Mock
-    private Set<Integer> neighboursRequiredToSurvive;
+    private ImmutableSet<Integer> neighboursRequiredToSurvive;
 
     @Before
     public void setUp() throws Exception {

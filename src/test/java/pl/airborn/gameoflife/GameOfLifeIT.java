@@ -2,17 +2,19 @@ package pl.airborn.gameoflife;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Ordering;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import pl.airborn.gameoflife.inject.BasicModule;
+import pl.airborn.gameoflife.configuration.Configuration;
+import pl.airborn.gameoflife.configuration.ConwayConfiguration;
 import pl.airborn.gameoflife.mapping.CellMapper;
+import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.Position2D;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -45,13 +47,10 @@ public class GameOfLifeIT {
     }
 
     private World createWorld(Position2D[] positions) {
-        Injector injector = Guice.createInjector(new BasicModule());
-        World world = injector.getInstance(World.class);
-
-        for (Position2D position : positions) {
-            world.addCellAt(position);
-        }
-
+        Configuration configuration = new ConwayConfiguration();
+        GameOfLife game = new GameOfLife(configuration);
+        List<Position> positionsList = Arrays.<Position>asList(positions);
+        World world = game.createWorld(positionsList);
         return world;
     }
 }

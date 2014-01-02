@@ -1,21 +1,20 @@
 package pl.airborn.gameoflife.rules;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.inject.NeighboursRequiredToSurvive;
 
-import java.util.Set;
-
 @Singleton
 public class ShouldDiePredicate implements Predicate<Position> {
     private final PopulationStateChecker populationStateChecker;
-    private final Set<Integer> neighboursRequiredToSurvive;
+    private final ImmutableSet<Integer> neighboursRequiredToSurvive;
 
     @Inject
-    public ShouldDiePredicate(PopulationStateChecker populationStateChecker, @NeighboursRequiredToSurvive Set<Integer> neighboursRequiredToSurvive) {
+    public ShouldDiePredicate(PopulationStateChecker populationStateChecker, @NeighboursRequiredToSurvive ImmutableSet<Integer> neighboursRequiredToSurvive) {
         this.populationStateChecker = populationStateChecker;
         this.neighboursRequiredToSurvive = neighboursRequiredToSurvive;
     }

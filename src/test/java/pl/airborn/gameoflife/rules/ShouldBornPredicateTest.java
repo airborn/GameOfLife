@@ -1,5 +1,6 @@
 package pl.airborn.gameoflife.rules;
 
+import com.google.common.collect.ImmutableSet;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -28,7 +29,7 @@ public class ShouldBornPredicateTest {
     @Mock
     private Position position;
     @Mock
-    private Set<Integer> neighboursRequiredToBorn;
+    private ImmutableSet<Integer> neighboursRequiredToBorn;
     @Mock
     private Population population;
 

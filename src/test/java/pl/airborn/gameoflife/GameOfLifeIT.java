@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import pl.airborn.gameoflife.inject.BasicModule;
 import pl.airborn.gameoflife.mapping.CellMapper;
+import pl.airborn.gameoflife.position.Position2D;
 
 import java.util.Collection;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class GameOfLifeIT {
 
     @Test
     @FileParameters(mapper = CellMapper.class, value = "classpath:simple.json")
-    public void shouldEvolveToGivenState(Cell[] before, Map<Integer, Cell[]> evolutionsSteps) throws Exception {
+    public void shouldEvolveToGivenState(Position2D[] before, Map<Integer, Cell[]> evolutionsSteps) throws Exception {
         World world = createWorld(before);
         Integer maxAge = Ordering.natural().max(evolutionsSteps.keySet());
 
@@ -43,12 +44,12 @@ public class GameOfLifeIT {
         }
     }
 
-    private World createWorld(Cell[] cells) {
+    private World createWorld(Position2D[] positions) {
         Injector injector = Guice.createInjector(new BasicModule());
         World world = injector.getInstance(World.class);
 
-        for (Cell cell : cells) {
-            world.addCellAt(cell.getPosition());
+        for (Position2D position : positions) {
+            world.addCellAt(position);
         }
 
         return world;

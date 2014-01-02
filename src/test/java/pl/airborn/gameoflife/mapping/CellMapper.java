@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import junitparams.mappers.DataMapper;
 import pl.airborn.gameoflife.Cell;
+import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.Position2D;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class CellMapper implements DataMapper {
             JsonNode rootNode = objectMapper.readTree(reader);
             for (JsonNode testNode : rootNode) {
                 JsonNode beforeNode = testNode.get("before");
-                Cell[] beforeCells = getCellArray(beforeNode);
+                Position2D[] beforeCells = getPositionArray(beforeNode);
                 JsonNode evolutions = testNode.get("evolutions");
                 Map<Integer, Cell[]> evolutionsSteps = Maps.newHashMap();
                 for (JsonNode evolution : evolutions) {
@@ -39,6 +40,16 @@ public class CellMapper implements DataMapper {
         }
 
         return objects.toArray();
+    }
+
+    private Position2D[] getPositionArray(JsonNode cellsNode) {
+        List<Position2D> positions = Lists.newArrayList();
+        for (JsonNode cellNode : cellsNode) {
+            int x = cellNode.get("x").asInt();
+            int y = cellNode.get("y").asInt();
+            positions.add(new Position2D(x, y));
+        }
+        return positions.toArray(new Position2D[positions.size()]);
     }
 
     private Cell[] getCellArray(JsonNode cellsNode) {

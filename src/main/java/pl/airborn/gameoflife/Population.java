@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import pl.airborn.gameoflife.position.Position;
 
 import java.util.Map;
 

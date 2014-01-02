@@ -3,6 +3,7 @@ package pl.airborn.gameoflife;
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.rules.KillRules;
 import pl.airborn.gameoflife.rules.NewbornsRules;
 

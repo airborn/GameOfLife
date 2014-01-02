@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import junitparams.mappers.DataMapper;
 import pl.airborn.gameoflife.Cell;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position2D;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -46,7 +46,7 @@ public class CellMapper implements DataMapper {
         for (JsonNode cellNode : cellsNode) {
             int x = cellNode.get("x").asInt();
             int y = cellNode.get("y").asInt();
-            cells.add(new Cell(new Position(x, y)));
+            cells.add(new Cell(new Position2D(x, y)));
         }
         return cells.toArray(new Cell[cells.size()]);
     }

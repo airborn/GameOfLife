@@ -1,11 +1,11 @@
-package pl.airborn.gameoflife;
+package pl.airborn.gameoflife.position;
 
-public class Position {
+public class Position2D implements Position {
 
     private final int x;
     private final int y;
 
-    public Position(int x, int y) {
+    public Position2D(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -27,7 +27,7 @@ public class Position {
             return false;
         }
 
-        Position position = (Position) o;
+        Position2D position = (Position2D) o;
 
         if (x != position.x) {
             return false;

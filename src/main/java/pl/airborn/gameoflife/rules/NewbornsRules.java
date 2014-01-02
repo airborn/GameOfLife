@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Population;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position;
 
 import java.util.Set;
 

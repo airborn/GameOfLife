@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.PositionCalculator;
 
 import static org.fest.assertions.api.Assertions.assertThat;

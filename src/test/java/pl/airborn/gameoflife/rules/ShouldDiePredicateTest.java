@@ -9,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import pl.airborn.gameoflife.PopulationStateChecker;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position;
 
 import java.util.Set;
 

@@ -1,7 +1,6 @@
 package pl.airborn.gameoflife.position;
 
 import org.junit.Test;
-import pl.airborn.gameoflife.Position;
 
 import java.util.Set;
 

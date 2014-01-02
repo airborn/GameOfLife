@@ -2,6 +2,7 @@ package pl.airborn.gameoflife;
 
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
+import pl.airborn.gameoflife.position.Position;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

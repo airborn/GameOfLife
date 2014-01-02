@@ -1,6 +1,7 @@
 package pl.airborn.gameoflife;
 
 import com.google.inject.Singleton;
+import pl.airborn.gameoflife.position.Position;
 
 @Singleton
 public class CellFactory {

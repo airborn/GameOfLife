@@ -1,6 +1,7 @@
-package pl.airborn.gameoflife;
+package pl.airborn.gameoflife.position;
 
 import org.junit.Test;
+import pl.airborn.gameoflife.position.Position;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 

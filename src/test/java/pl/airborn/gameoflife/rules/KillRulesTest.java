@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.airborn.gameoflife.Population;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

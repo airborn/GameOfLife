@@ -6,7 +6,7 @@ import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Population;
 import pl.airborn.gameoflife.inject.NeighboursRequiredToBorn;
 import pl.airborn.gameoflife.PopulationStateChecker;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position;
 
 import java.util.Set;
 

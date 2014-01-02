@@ -1,9 +1,7 @@
 package pl.airborn.gameoflife;
 
 import org.junit.Test;
-import pl.airborn.gameoflife.Cell;
-import pl.airborn.gameoflife.Position;
-import pl.airborn.gameoflife.CellFactory;
+import pl.airborn.gameoflife.position.Position;
 
 import static org.fest.assertions.api.Assertions.*;
 import static org.mockito.Mockito.mock;

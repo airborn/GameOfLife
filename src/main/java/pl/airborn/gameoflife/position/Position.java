@@ -1,4 +1,4 @@
-package pl.airborn.gameoflife;
+package pl.airborn.gameoflife.position;
 
 public class Position {
 

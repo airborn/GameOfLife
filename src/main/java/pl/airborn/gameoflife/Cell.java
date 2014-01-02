@@ -1,5 +1,7 @@
 package pl.airborn.gameoflife;
 
+import pl.airborn.gameoflife.position.Position;
+
 import java.util.Objects;
 
 public class Cell {

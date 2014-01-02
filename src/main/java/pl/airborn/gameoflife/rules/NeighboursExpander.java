@@ -3,7 +3,7 @@ package pl.airborn.gameoflife.rules;
 import com.google.common.base.Function;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import pl.airborn.gameoflife.Position;
+import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.PositionCalculator;
 
 @Singleton

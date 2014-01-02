@@ -1,6 +1,7 @@
 package pl.airborn.gameoflife;
 
 import com.google.common.collect.ImmutableSet;
+import pl.airborn.gameoflife.position.Position;
 
 public class PopulationChange {
 

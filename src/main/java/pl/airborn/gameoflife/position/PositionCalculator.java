@@ -2,7 +2,6 @@ package pl.airborn.gameoflife.position;
 
 import com.google.common.collect.Sets;
 import com.google.inject.Singleton;
-import pl.airborn.gameoflife.Position;
 
 import java.util.Set;
 

@@ -13,7 +13,8 @@ import pl.airborn.gameoflife.position.Position;
 import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NewbornsRulesTest {
@@ -36,7 +37,7 @@ public class NewbornsRulesTest {
 
         Position expectedPosition = mock(Position.class);
         Position unexpectedPosition = mock(Position.class);
-        Iterable<Position> neighbours = Lists.newArrayList(expectedPosition, unexpectedPosition );
+        Iterable<Position> neighbours = Lists.newArrayList(expectedPosition, unexpectedPosition);
         when(neighboursExpander.apply(position)).thenReturn(neighbours);
 
         when(shouldBorn.apply(expectedPosition)).thenReturn(true);

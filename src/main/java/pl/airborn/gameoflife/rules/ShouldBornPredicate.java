@@ -5,8 +5,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.Population;
-import pl.airborn.gameoflife.inject.NeighboursRequiredToBorn;
 import pl.airborn.gameoflife.PopulationStateChecker;
+import pl.airborn.gameoflife.inject.NeighboursRequiredToBorn;
 import pl.airborn.gameoflife.position.Position;
 
 @Singleton

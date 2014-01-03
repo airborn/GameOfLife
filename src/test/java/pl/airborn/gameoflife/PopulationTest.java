@@ -12,7 +12,8 @@ import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.PositionCalculator;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(JUnitParamsRunner.class)
 public class PopulationTest {

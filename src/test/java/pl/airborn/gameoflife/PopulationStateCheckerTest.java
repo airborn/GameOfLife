@@ -29,7 +29,7 @@ public class PopulationStateCheckerTest {
         final int expected = 2;
 
         Position cellPosition = mock(Position.class);
-        
+
         Position neighbour1 = mock(Position.class);
         Position neighbour2 = mock(Position.class);
         Position neighbour3 = mock(Position.class);

@@ -3,7 +3,7 @@ package pl.airborn.gameoflife;
 import org.junit.Test;
 import pl.airborn.gameoflife.position.Position;
 
-import static org.fest.assertions.api.Assertions.*;
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 public class CellFactoryTest {

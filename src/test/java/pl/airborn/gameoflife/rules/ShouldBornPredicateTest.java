@@ -13,8 +13,6 @@ import pl.airborn.gameoflife.Population;
 import pl.airborn.gameoflife.PopulationStateChecker;
 import pl.airborn.gameoflife.position.Position;
 
-import java.util.Set;
-
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 

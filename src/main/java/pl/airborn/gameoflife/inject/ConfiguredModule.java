@@ -10,7 +10,7 @@ public class ConfiguredModule extends AbstractModule {
 
     private final Configuration configuration;
 
-    public ConfiguredModule(Configuration configuration){
+    public ConfiguredModule(Configuration configuration) {
         this.configuration = configuration;
     }
 

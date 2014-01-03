@@ -5,8 +5,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import pl.airborn.gameoflife.PopulationStateChecker;
-import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.inject.NeighboursRequiredToSurvive;
+import pl.airborn.gameoflife.position.Position;
 
 @Singleton
 public class ShouldDiePredicate implements Predicate<Position> {

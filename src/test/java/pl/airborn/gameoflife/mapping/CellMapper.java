@@ -6,7 +6,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import junitparams.mappers.DataMapper;
 import pl.airborn.gameoflife.Cell;
-import pl.airborn.gameoflife.position.Position;
 import pl.airborn.gameoflife.position.Position2D;
 
 import java.io.IOException;
